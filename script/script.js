@@ -65,7 +65,7 @@ const codonsToProteins = {
 	TGG: "W",
 };
 
-// -------- NB : Ici j'essaye de charger le contenu du fichier .txt mais je n'arrive pas à le stocker dans une variable pour le réutiliser pour avancer sur la suite de l'exercice ---------- // 
+// -------- NB : Ici j'essaye de charger le contenu du fichier .txt mais je n'arrive pas à le stocker dans une variable (via le principe d'asynchrone ou de promesses) pour le réutiliser pour avancer sur la suite de l'exercice ---------- // 
 
 // const fs = require("fs");
 // const filePath = "script/adn.txt";
@@ -101,7 +101,7 @@ function getCodons(adn) {
 getCodons(adnArr); 
 
 
-// --------- PARTIE 1 - ETAPE 2 : on convertit chaque élément (codon) en protéine, puis on convertit la séquence de codons en protéines--------- //
+// --------- PARTIE 1 - ETAPE 2 : on convertit chaque élément (codon) en protéine, puis on convertit la séquence de codons en protéines --------- //
 function convertElementToProtein(codon) {
 	let protein = codonsToProteins[codon];
 	return protein;
@@ -120,3 +120,27 @@ function convertToProteins(arr) {
 }
 
 convertToProteins(codons);
+
+
+// --------- PARTIE 2 - ETAPE 1 : on découpe et on fait des groupes de 25 éléments --------- //
+let groups = [];
+function getGroups(adn) {
+	for (let i = 0; i < adn.length; i++) {
+		seq = adn.splice(0, 25).join("");
+		groups.push(seq);
+	}
+
+	for (let i = 0; i < groups.length; i++) {
+		console.log("🧬", groups[i]);
+	}
+	return groups;
+}
+getGroups(adnArr); 
+
+let refinedGroups = [];
+function refineGroups(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		// faire une fonction récursive ??
+	}
+}
+refineGroups(groups);
